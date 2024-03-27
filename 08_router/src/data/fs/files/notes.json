@@ -36,12 +36,6 @@
     "date": "2024-03-18T22:05:18.292Z"
   },
   {
-    "id": "7ffc91805b55ea4542bfa762",
-    "text": "texto modificado por segunda vez",
-    "category": "done",
-    "date": "2024-03-18T22:05:18.297Z"
-  },
-  {
     "id": "35a6eefeb2b479e21908d6ed",
     "text": "mi primera nota",
     "category": "to do",
@@ -64,5 +58,11 @@
     "text": "texto modificado por segunda vez",
     "category": "done",
     "date": "2024-03-21T00:53:58.787Z"
+  },
+  {
+    "id": "ebc64bc30d1be79b041a576d",
+    "text": "nueva nota",
+    "category": "to do",
+    "date": "2024-03-26T01:07:27.751Z"
   }
 ]
