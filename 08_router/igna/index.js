@@ -1,0 +1,1 @@
+alert("carpeta igna estatica")
