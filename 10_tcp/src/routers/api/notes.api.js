@@ -1,11 +1,12 @@
 import { Router } from "express";
 import notesManager from "../../data/fs/NotesManager.fs.js";
+import isText from "../../middlewares/isText.mid.js";
 
 const notesRouter = Router();
 
 notesRouter.get("/", read);
 notesRouter.get("/:nid", readOne);
-notesRouter.post("/", create);
+notesRouter.post("/", isText, create);
 notesRouter.put("/:nid", update);
 notesRouter.delete("/:nid", destroy);
 

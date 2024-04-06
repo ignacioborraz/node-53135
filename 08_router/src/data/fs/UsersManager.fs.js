@@ -1,9 +1,9 @@
 import fs from "fs";
 import crypto from "crypto";
 
-class NotesManager {
+class UsersManager {
   constructor() {
-    this.path = "./src/data/fs/files/notes.json";
+    this.path = "./src/data/fs/files/users.json";
     this.init();
   }
   init() {
@@ -15,27 +15,33 @@ class NotesManager {
   }
   async create(data) {
     try {
-      const note = {
-        id: crypto.randomBytes(12).toString("hex"),
-        text: data.text,
-        category: data.category || "to do",
-        date: data.date || new Date(),
-      };
-      let all = await fs.promises.readFile(this.path, "utf-8");
-      all = JSON.parse(all);
-      all.push(note);
-      all = JSON.stringify(all, null, 2);
-      await fs.promises.writeFile(this.path, all);
-      return note;
+      if (!data.email || !data.password) {
+        throw new Error("INGRESE EMAIL/PASSWORD");
+      } else {
+        const one = {
+          id: crypto.randomBytes(12).toString("hex"),
+          email: data.email,
+          password: data.password,
+          role: data.role || 0,
+          photo: data.photo || "https://i.postimg.cc/wTgNFWhR/profile.png",
+          age: data.age || 12,
+        };
+        let all = await fs.promises.readFile(this.path, "utf-8");
+        all = JSON.parse(all);
+        all.push(one);
+        all = JSON.stringify(all, null, 2);
+        await fs.promises.writeFile(this.path, all);
+        return one;
+      }
     } catch (error) {
       throw error;
     }
   }
-  async read(cat) {
+  async read(role) {
     try {
       let all = await fs.promises.readFile(this.path, "utf-8");
       all = JSON.parse(all);
-      cat && (all = all.filter((each) => each.category === cat));
+      role && (all = all.filter((each) => each.role === role));
       return all;
     } catch (error) {
       throw error;
@@ -77,12 +83,12 @@ class NotesManager {
     try {
       let all = await fs.promises.readFile(this.path, "utf-8");
       all = JSON.parse(all);
-      let note = all.find((each) => each.id === id);
-      if (note) {
+      let one = all.find((each) => each.id === id);
+      if (one) {
         let filtered = all.filter((each) => each.id !== id);
         filtered = JSON.stringify(filtered, null, 2);
         await fs.promises.writeFile(this.path, filtered);
-        return note;
+        return one;
       } else {
         const error = new Error("not found!");
         error.statusCode = 404;
@@ -94,5 +100,5 @@ class NotesManager {
   }
 }
 
-const notesManager = new NotesManager();
-export default notesManager;
+const usersManager = new UsersManager();
+export default usersManager;
