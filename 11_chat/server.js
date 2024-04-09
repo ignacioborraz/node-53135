@@ -20,6 +20,7 @@ nodeServer.listen(port, ready);
 //tcp server
 const socketServer = new Server(nodeServer);
 socketServer.on("connection", socketCb);
+export { socketServer };
 
 //template engine
 server.engine("handlebars", engine());
@@ -29,6 +30,7 @@ server.set("views", __dirname + "/src/views");
 //middlewares
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
+server.use(express.static(__dirname + "/public"));
 server.use(morgan("dev"));
 
 //endpoints
