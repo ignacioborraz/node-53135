@@ -1,0 +1,18 @@
+<main class="d-flex w-100 flex-grow-1">
+  <section class="d-flex flex-column align-items-center w-100">
+    <h1
+      class="bg-success-subtle p-2 text-center text-success w-100"
+    >PROFILE</h1>
+    <section
+      class="d-flex flex-column justify-content-center align-items-center w-25 m-3"
+    >
+      <h3 class="m-2 p-2 text-center">EMAIL: {{profile.email}}</h3>
+      <h5 class="m-2 p-2 text-center">AGE: {{profile.age}}</h5>
+      <img
+        style="width: 360px; height: 360px"
+        class="m-2 object-fit-cover"
+        src="{{profile.photo}}"
+      />
+    </section>
+  </section>
+</main>
