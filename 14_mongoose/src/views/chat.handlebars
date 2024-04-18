@@ -1,0 +1,23 @@
+<main class="d-flex flex-column align-items-center w-100 flex-grow-1">
+  <h1
+    class="bg-success-subtle p-2 text-center text-success w-100"
+  >CoderRoom - Last Messages</h1>
+  <section
+    class="m-3 w-50 d-flex flex-column justify-content-center align-items-center bg-success-subtle"
+  >
+    <span class="w-100 p-3" id="allMessages"></span>
+    <span class="w-100 p-3 d-flex justify-content-center align-items-center">
+      <span class="fw-bold pe-2" id="nickname"></span>
+      <input
+        class="w-100 ps-2"
+        type="text"
+        name="message"
+        id="message"
+        placeholder="Type and chat!"
+      />
+    </span>
+  </section>
+</main>
+<script src="https://cdn.socket.io/4.7.5/socket.io.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/scripts/chat.js"></script>
