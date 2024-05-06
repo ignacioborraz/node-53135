@@ -1,21 +1,20 @@
 import { Router } from "express";
-//import notesManager from "../../data/fs/NotesManager.fs.js";
-import notesManager from "../../data/mongo/NotesManager.mongo.js";
+import productsManager from "../../data/mongo/ProductsManager.mongo.js";
 import isText from "../../middlewares/isText.mid.js";
 
-const notesRouter = Router();
+const productsRouter = Router();
 
-notesRouter.get("/", read);
-notesRouter.get("/paginate", paginate);
-notesRouter.get("/:nid", readOne);
-notesRouter.post("/", isText, create);
-notesRouter.put("/:nid", update);
-notesRouter.delete("/:nid", destroy);
+productsRouter.get("/", read);
+productsRouter.get("/paginate", paginate);
+productsRouter.get("/:nid", readOne);
+productsRouter.post("/", isText, create);
+productsRouter.put("/:nid", update);
+productsRouter.delete("/:nid", destroy);
 
 async function create(req, res, next) {
   try {
     const data = req.body;
-    const one = await notesManager.create(data);
+    const one = await productsManager.create(data);
     return res.json({
       statusCode: 201,
       message: "CREATED ID: " + one.id,
@@ -28,7 +27,7 @@ async function create(req, res, next) {
 async function read(req, res, next) {
   try {
     const { category } = req.query;
-    const all = await notesManager.read(category);
+    const all = await productsManager.read(category);
     if (all.length > 0) {
       return res.json({
         statusCode: 200,
@@ -47,17 +46,17 @@ async function read(req, res, next) {
 async function paginate(req, res, next) {
   try {
     const filter = {};
-    const opts = {};
+    const opts = { page: 1, limit: 9, lean: true, sort: { title: 1 } };
     if (req.query.limit) {
       opts.limit = req.query.limit;
     }
     if (req.query.page) {
       opts.page = req.query.page;
     }
-    if (req.query.user_id) {
-      filter.user_id = req.query.user_id;
+    if (req.query.title) {
+      filter.title = new RegExp(req.query.title, "i")
     }
-    const all = await notesManager.paginate({ filter, opts });
+    const all = await productsManager.paginate({ filter, opts });
     return res.json({
       statusCode: 200,
       response: all.docs,
@@ -78,7 +77,7 @@ async function paginate(req, res, next) {
 async function readOne(req, res, next) {
   try {
     const { nid } = req.params;
-    const one = await notesManager.readOne(nid);
+    const one = await productsManager.readOne(nid);
     if (one) {
       return res.json({
         statusCode: 200,
@@ -98,7 +97,7 @@ async function update(req, res, next) {
   try {
     const { nid } = req.params;
     const data = req.body;
-    const one = await notesManager.update(nid, data);
+    const one = await productsManager.update(nid, data);
     return res.json({
       statusCode: 200,
       response: one,
@@ -111,7 +110,7 @@ async function update(req, res, next) {
 async function destroy(req, res, next) {
   try {
     const { nid } = req.params;
-    const one = await notesManager.destroy(nid);
+    const one = await productsManager.destroy(nid);
     return res.json({
       statusCode: 200,
       response: one,
@@ -121,4 +120,4 @@ async function destroy(req, res, next) {
   }
 }
 
-export default notesRouter;
+export default productsRouter;

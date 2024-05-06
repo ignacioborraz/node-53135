@@ -10,10 +10,9 @@ class Manager {
       throw error;
     }
   }
-  async read(cat) {
+  async read(filter) {
     try {
-      //cat para filtrar por categorias
-      const all = await this.Model.find();
+      const all = await this.Model.find(filter).lean();
       return all;
     } catch (error) {
       throw error;
@@ -21,7 +20,6 @@ class Manager {
   }
   async paginate({ filter, opts }) {
     try {
-      //cat para filtrar por categorias
       const all = await this.Model.paginate(filter, opts);
       return all;
     } catch (error) {

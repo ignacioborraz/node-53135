@@ -1,4 +1,5 @@
 import { Schema, Types, model } from "mongoose";
+import mongoosePaginate from "mongoose-paginate-v2";
 
 const collection = "notes";
 const schema = new Schema(
@@ -17,26 +18,20 @@ const schema = new Schema(
       index: true,
       required: true,
     },
-    user: { type: String, required: true },
   },
   {
     timestamps: true,
   }
 );
 
+schema.plugin(mongoosePaginate);
+
 schema.pre("find", function () {
   this.populate("user_id", "email photo -_id");
 });
-//schema.pre("find", function () { this.populate("category_id","email photo -_id") })
 schema.pre("findOne", function () {
   this.populate("user_id", "email");
 });
-/* schema.pre("findOneAndUpdate", function () {
-  this.populate("user_id", "email");
-}); */
-/* schema.pre("findOneAndDelete", function () {
-  this.populate("user_id", "email");
-}); */
 
 const Note = model(collection, schema);
 export default Note;
