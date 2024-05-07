@@ -66,6 +66,9 @@ header {
 .header-social-img {
   padding: 10px;
 }
+.button {
+  cursor: pointer;
+}
 
 /* NAVBAR */
 nav {

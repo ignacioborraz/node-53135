@@ -2,17 +2,21 @@ import createCartCard from "./createCartCard.js";
 import changeQuantityCart from "./changeQuantityCart.js";
 import removeProduct from "./removeProduct.js";
 
-export default async function printCartCards(id, user_id) {
+export default async function printCartCards(id) {
   try {
+    let response = await fetch("/api/sessions/online");
+    response = await response.json();
+    const user_id = response.user_id;
     let products = await fetch("/api/carts?user_id=" + user_id);
     products = await products.json();
     products = products.response;
     let cartTemplates = "";
     const selector = document.getElementById(id);
-    if (products.length > 0) {
+    if (products?.length > 0) {
       for (const element of products) {
         cartTemplates =
-          cartTemplates + createCartCard(element._id, element.product_id, element.quantity);
+          cartTemplates +
+          createCartCard(element._id, element.product_id, element.quantity);
       }
       selector.innerHTML = cartTemplates;
       document.querySelectorAll(".product-input").forEach((each) => {
