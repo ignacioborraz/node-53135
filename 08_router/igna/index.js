@@ -1,1 +1,0 @@
-alert("carpeta igna estatica")
