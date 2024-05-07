@@ -1,0 +1,68 @@
+[
+  {
+    "id": "d343b8af0bb4fa58af0461bd",
+    "text": "my first note",
+    "category": "done",
+    "date": "2024-03-18T22:05:18.127Z"
+  },
+  {
+    "id": "98bffd94f03eeab7a3461a72",
+    "text": "my 2nd note",
+    "category": "to do",
+    "date": "2024-03-18T22:05:18.133Z"
+  },
+  {
+    "id": "4013efbd0f49d02c6e098844",
+    "text": "my 3rd note",
+    "category": "to do",
+    "date": "2024-03-18T22:05:18.183Z"
+  },
+  {
+    "id": "c359a8a11f7df2208e4b67fa",
+    "text": "my 4th note",
+    "category": "to do",
+    "date": "2024-03-18T22:05:18.189Z"
+  },
+  {
+    "id": "c8ff4a7e631f4f624646c7f1",
+    "text": "my 5th note",
+    "category": "done",
+    "date": "2024-03-18T22:05:18.239Z"
+  },
+  {
+    "id": "b243b581dc78247d5861862f",
+    "text": "my 7th note",
+    "category": "to do",
+    "date": "2024-03-18T22:05:18.292Z"
+  },
+  {
+    "id": "35a6eefeb2b479e21908d6ed",
+    "text": "mi primera nota",
+    "category": "to do",
+    "date": "2024-03-19T00:57:14.214Z"
+  },
+  {
+    "id": "5b5d6438106f19fec243654c",
+    "text": "mi otr nota",
+    "category": "done",
+    "date": "2024-03-19T00:57:23.990Z"
+  },
+  {
+    "id": "ae287dc5162fbc7cfb16c186",
+    "text": "mi primera nota desde postman",
+    "category": "to do",
+    "date": "2024-03-21T00:53:31.269Z"
+  },
+  {
+    "id": "4b50a791e4053cd3760d113d",
+    "text": "texto modificado por segunda vez",
+    "category": "done",
+    "date": "2024-03-21T00:53:58.787Z"
+  },
+  {
+    "id": "ebc64bc30d1be79b041a576d",
+    "text": "nueva nota",
+    "category": "to do",
+    "date": "2024-03-26T01:07:27.751Z"
+  }
+]

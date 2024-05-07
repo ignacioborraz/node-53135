@@ -1,0 +1,58 @@
+[
+  {
+    "id": "0ef84d7647f50ee7c532080d",
+    "email": "igna@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "age": 12
+  },
+  {
+    "id": "f7bfce2ffdf13d4e9f1a87d5",
+    "email": "nao@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://www.canal12misiones.com/wp-content/uploads/2023/10/WhatsApp-Image-2023-10-10-at-11.32.08-AM.jpeg",
+    "age": 12
+  },
+  {
+    "id": "8febbd7d89ebce4f86dbfbf4",
+    "email": "talia@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://media.admagazine.com/photos/654c8f592dcb51875ef13be5/1:1/w_2250,h_2250,c_limit/flores-moradas.jpg",
+    "age": 12
+  },
+  {
+    "id": "2c97ff8583e47a6080fc5de4",
+    "email": "manuel@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://d2a5isokysfowx.cloudfront.net/wp-content/uploads/2022/03/que-se-necesita-estudiar-para-ser-programador-scaled-1200x900.jpg",
+    "age": 12
+  },
+  {
+    "id": "b0bc600c9e084787b991f03c",
+    "email": "lauti@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://electronicaonline.net/wp-content/uploads/2023/07/Electronica-Digital.webp",
+    "age": 12
+  },
+  {
+    "id": "10dc04ee8bf5eccc6ffcf222",
+    "email": "damian@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "age": 12
+  },
+  {
+    "id": "5ffdd49613ba3f5f00cfaf2c",
+    "email": "sofia@coder.com",
+    "password": "hola1234",
+    "role": 0,
+    "photo": "https://cdns-images.dzcdn.net/images/artist/04f357ed615b7c6a8c6c8f67f2b9d7d6/264x264.jpg",
+    "age": 12
+  }
+]
