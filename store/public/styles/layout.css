@@ -5,11 +5,13 @@ body,
   padding: 0;
   box-sizing: border-box;
 }
+
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
+
 main {
   flex-grow: 1;
 }
@@ -24,6 +26,7 @@ header {
   flex-direction: column;
   align-items: center;
 }
+
 .header-container {
   width: 1080px;
   display: flex;
@@ -31,21 +34,31 @@ header {
   align-items: center;
   flex-grow: 1;
 }
-.header-logo, .header-form, .header-social {
+
+.header-logo,
+.header-form,
+.header-social {
   width: 33%;
   display: flex;
   align-items: center;
   flex-grow: 1;
 }
+
 .header-logo {
   justify-content: flex-start;
 }
-.header-logo-img, .header-li, .header-a, .header-social-img {
+
+.header-logo-img,
+.header-li,
+.header-a,
+.header-social-img {
   height: 50px;
 }
+
 .header-form {
   justify-content: center;
 }
+
 .header-input {
   height: 60px;
   border-radius: 15px;
@@ -56,13 +69,18 @@ header {
   font-size: 14px;
   text-align: center;
 }
+
 .header-social {
   justify-content: flex-end;
   list-style-type: none;
 }
-.header-li, .header-a, .header-social-img {
+
+.header-li,
+.header-a,
+.header-social-img {
   width: 50px;
 }
+
 .header-social-img {
   padding: 10px;
 }
@@ -77,6 +95,7 @@ nav {
   list-style-type: none;
   font-size: 14px;
 }
+
 .nav-a {
   color: white;
   font-weight: 700;
@@ -87,9 +106,11 @@ nav {
   padding: 5px 0;
   font-size: 14px;
 }
+
 .nav-a:hover {
   text-decoration: underline;
 }
+
 /* @media (min-width:576px) {
   .nav-a {
     font-size: 12px;
@@ -127,29 +148,38 @@ nav {
   justify-content: center;
   padding-left: 0 20px;
 }
+
 .hero-title span:first-child {
   font-size: 20px;
 }
+
 .hero-title span:last-child {
   font-size: 50px;
   line-height: 30px;
 }
+
 .hero-span {
   color: white;
   font-weight: 700;
 }
+
 @media (min-width:680px) {
-  .carousel-item img, #hero {
+
+  .carousel-item img,
+  #hero {
     height: 210px;
   }
+
   .hero-title span:first-child {
     font-size: 40px;
   }
+
   .hero-title span:last-child {
     font-size: 100px;
     line-height: 80px;
   }
 }
+
 @media (min-width:1080px) {
   .carousel-item img {
     object-fit: contain;
@@ -180,22 +210,27 @@ footer {
   justify-content: space-between;
   padding: 10px;
 }
+
 .footer-ul {
   width: 170px;
   list-style-type: none;
   padding: 10px;
 }
+
 .footer-li {
   padding: 5px 0;
 }
+
 .footer-main-item {
   font-weight: bold;
   padding-bottom: 20px;
 }
+
 .footer-a {
   color: white;
   text-decoration: none;
 }
+
 .footer-copyright {
   width: 1080px;
   border-top: 1px solid #ba53fb;
@@ -204,4 +239,8 @@ footer {
   font-weight: bold;
   padding: 30px 0;
   box-sizing: border-box;
+}
+
+.flex-column {
+  flex-direction: column;
 }
