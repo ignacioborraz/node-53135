@@ -53,7 +53,7 @@ passport.use(
           //req.session.role = one.role;
           //req.session.photo = one.photo;
           //req.session.user_id = one._id;
-          const data = {
+          const user = {
             email,
             role: one.role,
             photo: one.photo,
@@ -62,7 +62,7 @@ passport.use(
           };
           const token = createToken(data);
           one.token = token;
-          return done(null, one);
+          return done(null, user);
         }
         const error = new Error("Invalid credentials");
         error.statusCode = 401;
