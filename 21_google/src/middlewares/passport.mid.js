@@ -1,7 +1,9 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
+import { Strategy as GoogleStrategy } from "passport-google-oauth2";
 import usersManager from "../data/mongo/UsersManager.mongo.js";
 import { createHash, verifyHash } from "../utils/hash.util.js";
+import { createToken } from "../utils/token.util.js";
 
 passport.use(
   "register",
@@ -46,16 +48,61 @@ passport.use(
         }
         const verify = verifyHash(password, one.password);
         if (verify) {
-          req.session.email = email;
-          req.session.online = true;
-          req.session.role = one.role;
-          req.session.photo = one.photo;
-          req.session.user_id = one._id;
+          //req.session.email = email;
+          //req.session.online = true;
+          //req.session.role = one.role;
+          //req.session.photo = one.photo;
+          //req.session.user_id = one._id;
+          const data = {
+            email,
+            role: one.role,
+            photo: one.photo,
+            _id: one._id,
+            online: true,
+          };
+          const token = createToken(data);
+          one.token = token;
           return done(null, one);
         }
         const error = new Error("Invalid credentials");
         error.statusCode = 401;
         return done(error);
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
+);
+passport.use(
+  "google",
+  new GoogleStrategy(
+    {
+      clientID: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      callbackURL: "http://localhost:8080/api/sessions/google/callback",
+      passReqToCallback: true,
+    },
+    async (req, accesToken, refreshToken, profile, done) => {
+      try {
+        //profile es el objeto que devuelve google con todos los datos del usuario
+        //nosotros vamos a registrar un id en lugar de un email
+        const { id, picture } = profile;
+        console.log(profile);
+        let user = await usersManager.readByEmail(id);
+        if (!user) {
+          user = {
+            email: id,
+            password: createHash(id),
+            photo: picture,
+          };
+          user = await usersManager.create(user);
+        }
+        req.session.email = user.email;
+        req.session.online = true;
+        req.session.role = user.role;
+        req.session.photo = user.photo;
+        req.session.user_id = user._id;
+        return done(null, user);
       } catch (error) {
         return done(error);
       }

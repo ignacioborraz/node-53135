@@ -2,6 +2,7 @@ export default async function saveProduct(id) {
   try {
     let response = await fetch("/api/sessions/online");
     response = await response.json();
+    console.log(response);
     const user_id = response.user_id;
     if (user_id) {
       const data = {
