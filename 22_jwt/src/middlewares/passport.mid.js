@@ -1,6 +1,7 @@
 import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GoogleStrategy } from "passport-google-oauth2";
+import { Strategy as JWTStrategy, ExtractJwt } from "passport-jwt";
 import usersManager from "../data/mongo/UsersManager.mongo.js";
 import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
@@ -16,7 +17,7 @@ passport.use(
         if (!email || !password) {
           const error = new Error("Please enter email and password!");
           error.statusCode = 400;
-          return done(error);
+          return done(null, null, error);
         }
         const one = await usersManager.readByEmail(email);
         if (one) {
@@ -60,9 +61,11 @@ passport.use(
             _id: one._id,
             online: true,
           };
-          const token = createToken(data);
-          one.token = token;
+          const token = createToken(user);
+          user.token = token;
           return done(null, user);
+          //agrega la propeidad USER al objeto de requerimientos
+          //esa propiedad user tiene todas las propiedades que estamos definiendo en el objeto correspondiente
         }
         const error = new Error("Invalid credentials");
         error.statusCode = 401;
@@ -103,6 +106,30 @@ passport.use(
         req.session.photo = user.photo;
         req.session.user_id = user._id;
         return done(null, user);
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
+);
+passport.use(
+  "jwt",
+  new JWTStrategy(
+    {
+      jwtFromRequest: ExtractJwt.fromExtractors([
+        (req) => req?.cookies["token"],
+      ]),
+      secretOrKey: process.env.SECRET_JWT,
+    },
+    (data, done) => {
+      try {
+        if (data) {
+          return done(null, data);
+        } else {
+          const error = new Error("Forbidden from jwt!");
+          error.statusCode = 403;
+          return done(error);
+        }
       } catch (error) {
         return done(error);
       }

@@ -44,6 +44,7 @@ async function printIcons() {
   let template = "";
   let online = await fetch("/api/sessions/online");
   online = await online.json();
+  console.log(online);
   if (online.statusCode === 200) {
     template = `
       <li id="facebook" class="header-li">

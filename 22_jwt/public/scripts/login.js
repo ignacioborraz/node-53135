@@ -25,13 +25,16 @@ document.querySelector("#login").addEventListener("click", async () => {
   let response = await fetch("/api/sessions/login", opts);
   response = await response.json();
   if (response.statusCode === 200) {
+    //console.log(response.token);
+    //localStorage.setItem("token", response.token);
     return location.replace("/");
+  } else {
+    return Swal.fire({
+      title: response.message,
+      icon: "error",
+      timer: 5000,
+      timerProgressBar: true,
+      confirmButtonColor: "#ff3b3c",
+    });
   }
-  return Swal.fire({
-    title: response.message,
-    icon: "error",
-    timer: 5000,
-    timerProgressBar: true,
-    confirmButtonColor: "#ff3b3c",
-  });
 });
