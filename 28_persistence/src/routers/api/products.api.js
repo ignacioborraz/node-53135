@@ -5,10 +5,10 @@ import isValidAdmin from "../../middlewares/isValidAdmin.mid.js";
 
 class ProductsRouter extends CustomRouter {
   init() {
+    this.create("/", ["PUBLIC"], isTitle, create);
     this.read("/", ["PUBLIC"], read);
     this.read("/paginate", ["PUBLIC"], paginate);
     this.read("/:nid", ["PUBLIC"], readOne);
-    this.create("/", ["ADMIN"], isValidAdmin, isTitle, create);
     this.update("/:nid", ["ADMIN"], update);
     this.destroy("/:nid", ["ADMIN"], destroy);
   }

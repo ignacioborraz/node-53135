@@ -1,5 +1,4 @@
 import fs from "fs";
-import crypto from "crypto";
 
 class UsersManager {
   constructor() {
@@ -18,20 +17,12 @@ class UsersManager {
       if (!data.email || !data.password) {
         throw new Error("INGRESE EMAIL/PASSWORD");
       } else {
-        const one = {
-          id: crypto.randomBytes(12).toString("hex"),
-          email: data.email,
-          password: data.password,
-          role: data.role || 0,
-          photo: data.photo || "https://i.postimg.cc/wTgNFWhR/profile.png",
-          age: data.age || 12,
-        };
         let all = await fs.promises.readFile(this.path, "utf-8");
         all = JSON.parse(all);
-        all.push(one);
+        all.push(data);
         all = JSON.stringify(all, null, 2);
         await fs.promises.writeFile(this.path, all);
-        return one;
+        return data;
       }
     } catch (error) {
       throw error;
@@ -47,16 +38,18 @@ class UsersManager {
       throw error;
     }
   }
+  //PROGRAMAR PAGINATE EN FS
   async readOne(id) {
     try {
       let all = await fs.promises.readFile(this.path, "utf-8");
       all = JSON.parse(all);
-      let note = all.find((each) => each.id === id);
-      return note;
+      let one = all.find((each) => each.id === id);
+      return one;
     } catch (error) {
       throw error;
     }
   }
+  //PROGRAMAR READBYEMAIL EN FS
   async update(id, data) {
     try {
       let all = await this.read();

@@ -11,7 +11,7 @@ async function create(req, res, next) {
     const data = req.body;
     data.user_id = req.user._id;
     const one = await createService(data);
-    return res.message201("CREATED ID: " + one.id);
+    return res.message201("CREATED ID: " + one._id);
   } catch (error) {
     return next(error);
   }

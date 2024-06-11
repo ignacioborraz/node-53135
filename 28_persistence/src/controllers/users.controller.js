@@ -5,13 +5,14 @@ import {
   updateService,
   destroyService,
 } from "../services/users.service.js";
+//CONTROLADOR LLAMA A SERVICIO
 
 class UsersController {
   async create(req, res, next) {
     try {
       const data = req.body;
       const one = await createService(data);
-      return res.message201("CREATED ID: " + one.id);
+      return res.message201("CREATED ID: " + one._id);
     } catch (error) {
       return next(error);
     }
