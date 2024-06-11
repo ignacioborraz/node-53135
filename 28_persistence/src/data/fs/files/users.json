@@ -1,0 +1,46 @@
+[
+  {
+    "id": "1d921c0a09f24212ae9d3568",
+    "email": "lautaro@coder.com",
+    "password": "hola",
+    "role": 0,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "age": 12
+  },
+  {
+    "id": "cd838bcec2d59d03c7cf39c7",
+    "email": "igna@coder.com",
+    "password": "hola",
+    "role": 0,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "age": 12
+  },
+  {
+    "id": "26cd9b97fdd04eba75e4307f",
+    "email": "igna@coder.com",
+    "password": "$2b$10$pOt5Cotm9tjb9OH71/dr/eM09UZSi7wJA8/kD9mJgoGzCr8HvqQDq",
+    "role": 0,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "age": 12
+  },
+  {
+    "_id": "0fa5236882f17e70077b9296",
+    "email": "dani@coder.com",
+    "password": "$2b$10$kETrU.I3XspVcVQuDjtm7u91ylJN/IUdqtS2UFeB6fizr9bHiukEW",
+    "role": 0,
+    "age": 12,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "createdAt": "2024-06-11T01:12:09.711Z",
+    "updatedAt": "2024-06-11T01:12:09.711Z"
+  },
+  {
+    "_id": "42bfb2546fe2d0661ac19eb3",
+    "email": "damian@coder.com",
+    "password": "$2b$10$.YPGuitwQb4rUhBKqJd70uRM22.LAL/tYIrXmrFR6c89FIEtBv/xS",
+    "role": 0,
+    "age": 12,
+    "photo": "https://i.postimg.cc/wTgNFWhR/profile.png",
+    "createdAt": "2024-06-11T01:13:14.143Z",
+    "updatedAt": "2024-06-11T01:13:14.143Z"
+  }
+]
