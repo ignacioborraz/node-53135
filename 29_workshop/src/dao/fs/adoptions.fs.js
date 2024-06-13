@@ -1,5 +1,4 @@
-import Adoption from "./models/adoption.model.js";
-import Manager from "./manager.mongo.js";
+import Manager from "./manager.fs.js";
 
-const adoptionsManager = new Manager(Adoption);
+const adoptionsManager = new Manager("adoptions");
 export default adoptionsManager;

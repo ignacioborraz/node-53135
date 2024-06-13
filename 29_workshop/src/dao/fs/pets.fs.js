@@ -1,5 +1,4 @@
-import Pet from "./models/pet.model.js";
 import Manager from "./manager.fs.js";
 
-const petsManager = new Manager(Pet);
+const petsManager = new Manager("pets");
 export default petsManager;

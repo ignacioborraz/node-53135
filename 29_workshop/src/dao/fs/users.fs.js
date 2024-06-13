@@ -1,5 +1,4 @@
-import User from "./models/user.model.js";
 import Manager from "./manager.fs.js";
 
-const usersManager = new Manager(User);
+const usersManager = new Manager("users");
 export default usersManager;

@@ -1,3 +1,5 @@
+import fs from "fs"
+
 class Manager {
   constructor(path) {
     this.path = `./src/dao/fs/files/${path}.json`;
