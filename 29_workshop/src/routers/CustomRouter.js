@@ -1,7 +1,6 @@
 import { Router } from "express";
 import { verifyToken } from "../utils/token.util.js";
-import dao from "../dao/dao.factory.js"
-const { usersManager } = dao
+import authRepository from "../repositories/auth.rep.js";
 
 class CustomRouter {
   //para construir y configurar cada instancia del enrutador
@@ -41,27 +40,23 @@ class CustomRouter {
     return next();
   };
   policies = (policies) => async (req, res, next) => {
-    if (policies.includes("PUBLIC")) return next();
-    else {
-      let token = req.cookies["token"];
+    //desarrollar las politicas
+    try {
+      if (policies.includes("PUBLIC")) return next();
+      const token = req.cookies["token"]
       if (!token) return res.error401();
-      else {
-        try {
-          token = verifyToken(token);
-          const { role, email } = token;
-          if (
-            (policies.includes("USER") && role === 0) ||
-            (policies.includes("ADMIN") && role === 1)
-          ) {
-            const user = await usersManager.readByEmail(email);
-            //proteger contraseña del usuario!!!
-            req.user = user;
-            return next();
-          } else return res.error403();
-        } catch (error) {
-          return res.error400(error.message);
-        }
+      const dataOfToken = verifyToken(token)
+      const { email, role } = dataOfToken
+      //el role lo necesito para autorizaciones
+      //el email para buscar el usuario y agregar la propiedad user al objeto de requerimientos
+      if ((policies.includes("USER")&& role === 0) ||(policies.includes("ADMIN")&&role===1)){
+        const user = await authRepository.readByEmailRepository(email)
+        //proteger la contraseña!!!
+        req.user = user
       }
+      return res.error403();
+    } catch (error) {
+      return next(error)
     }
   };
   create(path, arrayOfPolicies, ...callbacks) {

@@ -11,12 +11,12 @@ import isValidPet from "../../middlewares/isValidPet.mid.js";
 
 class PetsRouter extends CustomRouter {
   init() {
-    this.create("/", ["PUBLIC"], isValidPet, create);
+    this.create("/", ["ADMIN"], isValidPet, create);
     //la creacion de una mascota deberia ser ADMIN, PEEERO no tenemos el register/login armado
     this.read("/", ["PUBLIC"], read);
     this.read("/:pid", ["PUBLIC"], readById);
-    this.update("/:pid", ["PUBLIC"], update);
-    this.destroy("/:pid", ["PUBLIC"], destroy);
+    this.update("/:pid", ["ADMIN"], update);
+    this.destroy("/:pid", ["ADMIN"], destroy);
   }
 }
 

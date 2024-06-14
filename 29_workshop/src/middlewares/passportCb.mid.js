@@ -1,4 +1,4 @@
-import passport from "passport";
+import passport from "./passport.mid.js";
 
 //es una funcion que depende de la estrategia a implementar y que devuelve:
 //el error si ocurre
