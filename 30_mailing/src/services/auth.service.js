@@ -1,11 +1,13 @@
 //SERVICIO LLAMA A REPOSITORIO
 import Service from "./service.js";
-const authService = new Service();
+import authRepository from "../repositories/auth.rep.js";
+const authService = new Service(authRepository);
 
 export const {
   createService,
   readService,
-  readOneService,
+  readByIdService,
+  readByEmailService,
   updateService,
   destroyService,
 } = authService;

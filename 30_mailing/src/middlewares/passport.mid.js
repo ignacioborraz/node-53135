@@ -6,6 +6,8 @@ import { createHash, verifyHash } from "../utils/hash.util.js";
 import { createToken } from "../utils/token.util.js";
 import UsersDTO from "../dto/users.dto.js";
 import authRepository from "../repositories/auth.rep.js";
+import crypto from "crypto";
+import sendEmail from "../utils/mailing.util.js";
 
 passport.use(
   "register",
@@ -20,7 +22,16 @@ passport.use(
           return done(error);
         }
         const data = new UsersDTO(req.body);
+        //1° el dto necesita las propiedades de verificacion
         user = await authRepository.create(data);
+        //2° una vez que el usuario se creó
+        //la estrategia debe enviar un correo electronico
+        //con un codigo aleatorio para la verificacion del usuario
+        await sendEmail({
+          to: email,
+          first_name: user.first_name,
+          code: user.verifyCode,
+        });
         return done(null, user);
       } catch (error) {
         return done(error);
@@ -40,8 +51,11 @@ passport.use(
           error.statusCode = 400;
           return done(error);
         }
-        const verify = verifyHash(password, one.password);
-        if (!verify) {
+        const verifyPass = verifyHash(password, one.password);
+        //4° ahora no solo tengo que verificar la contraseña
+        //sino que tmb debo verificar que el usuario fue verificado
+        const verifyAccount = one.verify
+        if (!verifyPass && !verifyAccount) {
           const error = new Error("Invalid credentials");
           error.statusCode = 400;
           return done(error);

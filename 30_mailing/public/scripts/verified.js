@@ -12,22 +12,24 @@ printIcons();
 printNavBar(options, "navbar");
 printFooter(options, "footer");
 
-document.querySelector("#login").addEventListener("click", async () => {
+document.querySelector("#verified").addEventListener("click", async () => {
   const data = {
     email: document.querySelector("#email").value,
-    password: document.querySelector("#password").value,
+    code: document.querySelector("#code").value,
   };
+  console.log(data);
   const opts = {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
-  let response = await fetch("/api/auth/login", opts);
+  let response = await fetch("/api/auth/verify", opts);
   response = await response.json();
+  console.log(response);
   if (response.statusCode === 200) {
     //console.log(response.token);
     //localStorage.setItem("token", response.token);
-    return location.replace("/");
+    //return location.replace("/");
   } else {
     return Swal.fire({
       title: response.message,

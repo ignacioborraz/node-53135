@@ -22,6 +22,14 @@ class AuthRepository {
       throw error;
     }
   };
+  updateRepository = async (id, data) => {
+    try {
+      const one = await this.model.update(id, data);
+      return one;
+    } catch (error) {
+      throw error;
+    }
+  };
 }
 
 const authRepository = new AuthRepository();

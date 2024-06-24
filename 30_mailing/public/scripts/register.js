@@ -16,7 +16,7 @@ document.querySelector("#register").addEventListener("click", async () => {
   const data = {
     email: document.querySelector("#email").value,
     password: document.querySelector("#password").value,
-    photo: document.querySelector("#photo").value,
+    first_name: document.querySelector("#first_name").value,
     age: document.querySelector("#age").value,
   };
   const opts = {
@@ -24,7 +24,7 @@ document.querySelector("#register").addEventListener("click", async () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   };
-  let response = await fetch("/api/sessions/register", opts);
+  let response = await fetch("/api/auth/register", opts);
   response = await response.json();
   if (response.statusCode === 201) {
     Swal.fire({
@@ -35,7 +35,7 @@ document.querySelector("#register").addEventListener("click", async () => {
       confirmButtonColor: "#ff3b3c",
     });
     //si no vamos a re-dirigir hay que re-setear el formulario!
-    //return location.replace("/login.html");
+    return location.replace("/verified.html");
   }
   return Swal.fire({
     title: response.message,
