@@ -14,7 +14,7 @@ class UsersDTO {
     this.password = createHash(data.password);
     this.role = data.role || 0;
     this.avatar = data.avatar || "https://i.postimg.cc/wTgNFWhR/profile.png";
-    this.verify = false;
+    this.verify = data.verify || false;
     this.verifyCode = crypto.randomBytes(12).toString("hex");
     //verificar si corresponde o no evaluar el heasheo de la contraseña
     //porque el enrutador de sessions (/api/sessions/register) está usando PASSPORT!!!

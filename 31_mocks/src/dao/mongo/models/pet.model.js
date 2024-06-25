@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const collection = "pets";
 
@@ -14,6 +15,7 @@ const schema = new mongoose.Schema(
   { timestamps: true }
 );
 
+schema.plugin(mongoosePaginate);
 const Pet = mongoose.model(collection, schema);
 
 export default Pet;

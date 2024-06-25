@@ -1,5 +1,6 @@
 //REPOSITORIO LLAMA A DAO
 import dao from "../dao/dao.factory.js";
+import UsersDTO from "../dto/users.dto.js";
 const { usersManager } = dao;
 
 class AuthRepository {
@@ -8,6 +9,7 @@ class AuthRepository {
   }
   create = async (data) => {
     try {
+      data = new UsersDTO(data);
       const one = await this.model.create(data);
       return one;
     } catch (error) {

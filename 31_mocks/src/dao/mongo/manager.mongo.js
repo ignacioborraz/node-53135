@@ -11,8 +11,13 @@ class Manager {
     }
   }
   async read(filter) {
+    //async read(filter,opts) {
     try {
-      const all = await this.model.find(filter).lean();
+      //PARA LEER SIN PAGINAR
+      //const all = await this.model.find(filter).sort("specie").lean();
+      //PARA LEER PAGINANDO
+      const opts = { sort: "name" };
+      const all = await this.model.paginate(filter, opts);
       return all;
     } catch (error) {
       throw error;
