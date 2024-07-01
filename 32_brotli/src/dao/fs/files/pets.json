@@ -1,0 +1,11 @@
+[
+  {
+    "_id": "578b860710f91addc33a9411",
+    "name": "frida",
+    "specie": "perro",
+    "adopted": false,
+    "image": "https://www.dogster.com/wp-content/uploads/2024/03/miniature-schnauzer-dog-sitting-outdoors_Debra-Anderson_Shutterstock-600x401.jpg",
+    "createdAt": "2024-06-13T00:33:17.671Z",
+    "updatedAt": "2024-06-13T00:33:17.671Z"
+  }
+]
