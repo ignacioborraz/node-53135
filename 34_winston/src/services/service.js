@@ -22,7 +22,7 @@ class Service {
   };
   readByIdService = async (id) => {
     try {
-      const one = await this.repository.readById(id);
+      const one = await this.repository.readBy({ _id: id });
       return one;
     } catch (error) {
       throw error;
@@ -30,7 +30,7 @@ class Service {
   };
   readByEmailService = async (email) => {
     try {
-      const one = await this.repository.readByEmail(email);
+      const one = await this.repository.readBy({ email });
       return one;
     } catch (error) {
       throw error;

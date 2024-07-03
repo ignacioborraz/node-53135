@@ -5,16 +5,13 @@ import {
   create,
   readAll,
   read
-} from "../controllers/adoptions.controller.js";
-
-import areValidParams from "../middlewares/areValidParams.js";
-import isAdopted from "../middlewares/isAdopted.js";
+} from "../../controllers/adoptions.controller.js";
 
 class AdoptionsRouter extends CustomRouter {
   init() {
-    router.create("/:uid/:pid", ["ADMIN"], areValidParams, isAdopted, create);
-    router.read("/", ["PUBLIC"], readAll);
-    router.read("/:aid", ["PUBLIC"], read);
+    this.create("/:uid/:pid", ["ADMIN"], /* areValidParams, isAdopted, */ create);
+    this.read("/", ["PUBLIC"], readAll);
+    this.read("/:aid", ["PUBLIC"], read);
   }
 }
 

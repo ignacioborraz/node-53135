@@ -53,9 +53,10 @@ class CustomRouter {
         (policies.includes("USER") && role === "USER") ||
         (policies.includes("ADMIN") && role === "ADMIN")
       ) {
-        const user = await authRepository.readByEmailRepository(email);
+        const user = await authRepository.readByEmail(email);
         //proteger la contraseña!!!
         req.user = user;
+        return next();
       }
       return res.error403();
     } catch (error) {

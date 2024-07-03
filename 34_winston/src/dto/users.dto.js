@@ -12,7 +12,7 @@ class UsersDTO {
     this.last_name = data.last_name;
     this.email = data.email;
     this.password = createHash(data.password);
-    this.role = data.role || 0;
+    this.role = data.role || "USER";
     this.avatar = data.avatar || "https://i.postimg.cc/wTgNFWhR/profile.png";
     this.verify = data.verify || false;
     this.verifyCode = crypto.randomBytes(12).toString("hex");

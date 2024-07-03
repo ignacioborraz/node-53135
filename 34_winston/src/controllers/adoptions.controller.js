@@ -1,5 +1,5 @@
 //CONTROLADOR LLAMA A SERVICIO
-import { createService, paginateService, readByIdService } from "../services/adoptions.service.js";
+import { createService, readAllService, readByIdService } from "../services/adoptions.service.js";
 import { updateService } from "../services/pets.service.js";
 
 const create = async (req, res, next) => {
@@ -18,16 +18,17 @@ const create = async (req, res, next) => {
 const readAll = async (req, res, next) => {
   try {
     let queries = {
-      page: 1,
+/*       page: 1,
       limit: 4,
-      skip: 0,
+      skip: 0, */
     };
-    req.query.page && (queries.page = req.query.page);
-    req.query.limit && (queries.limit = Number(req.query.limit));
-    queries.skip = (queries.page - 1) * queries.limit;
-    let response = await paginateService(queries);
-    if (response.docs.length > 0) {
-      return res.response200(payload);
+    //req.query.page && (queries.page = req.query.page);
+    //req.query.limit && (queries.limit = Number(req.query.limit));
+    //queries.skip = (queries.page - 1) * queries.limit;
+    let response = await readAllService(queries);
+    console.log(response);
+    if (response.length > 0) {
+      return res.response200(response);
     }
     return res.error404();
   } catch (error) {
