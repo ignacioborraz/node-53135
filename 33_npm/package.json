@@ -1,0 +1,16 @@
+{
+  "name": "33_npm",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "calculator-53135": "^2.0.0"
+  }
+}
