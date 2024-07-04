@@ -16,9 +16,9 @@ passport.use(
     { passReqToCallback: true, usernameField: "email" },
     async (req, email, password, done) => {
       try {
-        let user = await authRepository.readByEmailRepository(email);
+        let user = await authRepository.readByEmail(email);
         if (user) {
-          const error = new CustomError(errors.invalid)
+          const error = CustomError.new(errors.invalid)
           return done(error);
         }
         const data = new UsersDTO(req.body);
@@ -45,9 +45,9 @@ passport.use(
     { passReqToCallback: true, usernameField: "email" },
     async (req, email, password, done) => {
       try {
-        const one = await authRepository.readByEmailRepository(email);
+        const one = await authRepository.readByEmail(email);
         if (!one) {
-          const error = new CustomError(errors.invalid)
+          const error = CustomError.new(errors.invalid)
           return done(error);
         }
         const verifyPass = verifyHash(password, one.password);
@@ -55,7 +55,7 @@ passport.use(
         //sino que tmb debo verificar que el usuario fue verificado
         const verifyAccount = one.verify
         if (!verifyPass && !verifyAccount) {
-          const error = new CustomError(errors.invalid)
+          const error = CustomError.new(errors.invalid)
           return done(error);
         }
         delete one.password;
