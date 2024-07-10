@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: adopt
+spec:
+  selector:
+    app: adopt
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adopt
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: adopt
+  template:
+    metadata:
+      labels:
+        app: adopt
+    spec:
+      containers:
+      - name: adopt
+        image: ignacioborraz/adopt:1.0.0
+        ports:
+          - containerPort: 8080
+        imagePullPolicy: Always
