@@ -16,7 +16,9 @@
     "simplex": "artillery quick --count 20 --num 100 'http://localhost:8080/simplex' -o ./test/artillery/simplex.json",
     "complex": "artillery quick --count 20 --num 100 'http://localhost:8080/complex' -o ./test/artillery/complex.json",
     "flow": "artillery run ./test/artillery/flow.yaml -o ./test/artillery/flow.json",
-    "report": "artillery report ./test/artillery/flow.json"
+    "report": "artillery report ./test/artillery/flow.json",
+    "image": "docker build -t adoptme .",
+    "container": "docker run -p 8888:8080 adoptme"
   },
   "keywords": [],
   "author": "",
