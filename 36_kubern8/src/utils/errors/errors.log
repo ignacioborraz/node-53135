@@ -1,0 +1,9 @@
+[33mERROR[39m: POST /api/auth/register - 9:08:08 PM - Invalid credentials
+[33mERROR[39m: POST /api/pets - 9:13:42 PM - winston.error is not a function
+[33mERROR[39m: POST / - 9:14:01 PM - Forbidden from poliecies!
+[33mERROR[39m: POST / 403 - 9:16:57 PM - Forbidden from poliecies!
+[33mERROR[39m: POST / 403 - 9:17:49 PM - Forbidden from poliecies!
+[33mERROR[39m: GET /simplex undefined - 9:37:36 PM - policies.includes is not a function
+[33mERROR[39m: POST / 403 - 11:05:49 AM - Forbidden from poliecies!
+[33mERROR[39m: POST /api/pets 400 - 11:06:00 AM - "specie" must be a number
+[33mERROR[39m: POST /api/pets 400 - 11:06:45 AM - "specie" is required
