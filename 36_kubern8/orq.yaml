@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
-metadata:
-  name: adopt
+metadata: 
+  name: adoptme
 spec:
   selector:
-    app: adopt
+    app: app
   ports:
     - port: 80
       targetPort: 8080
@@ -13,20 +13,20 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: adopt
+  name: adoptme
 spec:
-  replicas: 3
+  replicas: 10
   selector:
     matchLabels:
-      app: adopt
+      app: adoptme
   template:
     metadata:
       labels:
-        app: adopt
+        app: adoptme
     spec:
       containers:
-      - name: adopt
-        image: ignacioborraz/adopt:1.0.0
+      - name: app
+        image: ignacioborraz/adoptme:1.0.0
         ports:
           - containerPort: 8080
         imagePullPolicy: Always
