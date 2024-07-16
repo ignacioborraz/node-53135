@@ -1,0 +1,42 @@
+[33mERROR[39m: POST /api/auth/register - 9:08:08 PM - Invalid credentials
+[33mERROR[39m: POST /api/pets - 9:13:42 PM - winston.error is not a function
+[33mERROR[39m: POST / - 9:14:01 PM - Forbidden from poliecies!
+[33mERROR[39m: POST / 403 - 9:16:57 PM - Forbidden from poliecies!
+[33mERROR[39m: POST / 403 - 9:17:49 PM - Forbidden from poliecies!
+[33mERROR[39m: GET /simplex undefined - 9:37:36 PM - policies.includes is not a function
+[33mERROR[39m: POST / 403 - 11:05:49 AM - Forbidden from poliecies!
+[33mERROR[39m: POST /api/pets 400 - 11:06:00 AM - "specie" must be a number
+[33mERROR[39m: POST /api/pets 400 - 11:06:45 AM - "specie" is required
+[33mERROR[39m: POST /api/auth/register 400 - 8:57:14 PM - "first_name" is required,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 8:57:33 PM - "first_name" is required,"email" must be a string,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 9:00:27 PM - el nombre es requerido,"email" must be a string,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 9:00:46 PM - el nombre no puede ser una cadena de texto vacía,"email" must be a string,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 9:00:56 PM - el nombre tiene que tener minimo 3 letras,"email" must be a string,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 9:01:11 PM - el nombre tiene que tener maximo 50 letras,"email" must be a string,"password" is required
+[33mERROR[39m: POST /api/auth/register 400 - 9:02:17 PM - el nombre tiene que tener maximo 50 letras,"email" must be a string,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:04:35 PM - el nombre tiene que tener maximo 50 letras,"email" must be a string,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:05:07 PM - el nombre tiene que tener maximo 50 letras,el email debe ser de tipo cadena de texto,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:05:23 PM - el nombre tiene que tener maximo 50 letras,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:05:31 PM - la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:07:02 PM - "email" must be a valid email,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:07:45 PM - el email debe ser válido,la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:07:59 PM - la contraseña es requerido
+[33mERROR[39m: POST /api/auth/register 400 - 9:08:10 PM - el email debe ser de tipo cadena de texto
+[33mERROR[39m: POST /api/auth/register 400 - 9:09:02 PM - el email debe ser de tipo cadena de texto
+[33mERROR[39m: POST /api/auth/register 400 - 9:09:47 PM - la contraseña debe ser de tipo cadena de texto
+[33mERROR[39m: POST /api/auth/register 400 - 9:11:16 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:11:28 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:12:40 PM - el email debe ser válido,el email tiene que tener minimo 3 letras,"password" with value "hola" fails to match the required pattern: /^[a-zA-Z0-9]$/
+[33mERROR[39m: POST /api/auth/register 400 - 9:13:03 PM - el email debe ser válido,el email tiene que tener minimo 3 letras,"password" with value "hoA1234" fails to match the required pattern: /^[a-zA-Z0-9]$/
+[33mERROR[39m: POST /api/auth/register 400 - 9:14:16 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:14:28 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:14:38 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:16:16 PM - el email debe ser válido,el email tiene que tener minimo 3 letras
+[33mERROR[39m: POST /api/auth/register 400 - 9:17:33 PM - el email debe ser válido,el email tiene que tener minimo 3 letras,la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:17:45 PM - el email debe ser válido,el email tiene que tener minimo 3 letras,la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:19:08 PM - el email debe ser válido,el email tiene que tener minimo 3 letras,la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:19:19 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:19:40 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:19:54 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:20:26 PM - la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:20:43 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri

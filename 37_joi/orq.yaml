@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata: 
+  name: adoptme
+spec:
+  selector:
+    app: app
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adoptme
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: adoptme
+  template:
+    metadata:
+      labels:
+        app: adoptme
+    spec:
+      containers:
+      - name: app
+        image: ignacioborraz/adoptme:1.0.0
+        ports:
+          - containerPort: 8080
+        imagePullPolicy: Always
