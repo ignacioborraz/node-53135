@@ -1,0 +1,25 @@
+config:
+  pluggins:
+    metrics-by-endpoint : {}
+  target: http://localhost:8080/api
+  phases:
+    - duration: 10
+      arrivalRate: 50
+scenarios:
+  - name: login
+    flow:
+      - log: login
+      - post: 
+          url: /auth/login
+          json:
+            email: igna@coder.com
+            password: hola1234
+      - log: read all pets
+      - get:
+          url: /pets
+      - log: create pet
+      - post:
+          url: /pets
+          json:
+            name: igna
+            specie: dog
