@@ -1,0 +1,232 @@
+components:
+  schemas: 
+    User:
+      type: object
+      properties:
+        first_name:
+          type: string
+          description: Nombre del usuario que quiere registrarse
+        last_name:
+          type: string
+          description: apellido del usuario que quiere registrarse
+        password:
+          type: string
+          description: contraseña del usuario que quiere registrarse
+        avatar:
+          type: string
+          description: url de la foto que el usuario usará como perfil
+        role:
+          type: string
+          description: para definir los permisos según el rol
+        verify:
+          type: boolean
+          description: para definir si una cuenta fue o no verificada
+        verifyCode:
+          type: string
+          description: para definir el código de verificación de la cuenta
+      example:
+        first_name: igna
+        last_name: borraz
+        email: igna@coder.com
+        password: hola1234
+        avatar: https://www.mifoto.com/igna.png
+  responses:
+    Message200:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al éxito
+        message:
+          type: string
+          description: Texto descriptivo con el éxito en la operación
+      example:
+        statusCode: 200
+        message: Verified User!
+    Message201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al éxito en la creación
+        message:
+          type: string
+          description: Texto descriptivo con el éxito en la creación
+      example:
+        statusCode: 201
+        message: User registered!
+    Response200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al éxito devolviendo datos
+        response:
+          type: object
+          description: Objeto con los datos del recurso solicitado          
+      example:
+        statusCode: 200
+        response:
+          first_name: igna
+          last_name: borraz
+          email: igna@coder.com
+          password: hola1234
+          avatar: www.mifoto.com/igna.png
+    Response200all:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al éxito devolviendo datos
+        response:
+          type: array
+          description: Array de objetos del recurso solicitado
+      example:
+        statusCode: 200
+        response:
+          - first_name: igna
+            last_name: borraz
+            email: igna@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+          - first_name: lauti
+            email: lauti@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+          - first_name: dani
+            email: dani@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+    Paginate:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al éxito devolviendo datos paginados
+        response:
+          type: array
+          description: Array de objetos del recurso solicitado paginados y ordenados
+        info:
+          type: object
+          description: Datos de la paginación
+      example:
+        statusCode: 200
+        response:
+          - first_name: igna
+            last_name: borraz
+            email: igna@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+          - first_name: lauti
+            email: lauti@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+          - first_name: dani
+            email: dani@coder.com
+            password: hola1234
+            avatar: www.mifoto.com/igna.png
+        info:
+          next: null
+          prev: null
+    Error400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al fracaso por problemas del cliente
+        message:
+          type: string
+          description: Texto descriptivo con mensaje de error por parte del cliente
+      example:
+        statusCode: 400
+        message: Incomplete data on mid
+    Error401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al fracaso de autenticación
+        message:
+          type: string
+          description: Texto descriptivo con mensaje de error de autenticacion
+      example:
+        statusCode: 401
+        message: Bad auth from policies!
+    Error403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al fracaso de autorización
+        message:
+          type: string
+          description: Texto descriptivo con mensaje de error de autorizacion
+      example:
+        statusCode: 403
+        message: Forbidden from policies!
+    Error404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al fracaso por no encontrar lo solocitado
+        message:
+          type: string
+          description: Texto descriptivo con mensaje de error de no encontrado el recurso
+      example:
+        statusCode: 404
+        message: Not found docs
+    Error500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int64
+          description: Codigo de estado correrspondiente a la solicitud al fracaso por error fatal en el servidor
+        message:
+          type: string
+          description: Texto descriptivo con mensaje de error por parte del servidor
+      example:
+        statusCode: 500
+        message: CODER API ERROR
+paths:
+  /api/auth/register:
+    post:
+      summary: Ruta para el registro de un nuevo usuario en nuestro servidor
+      tags:
+        - User
+      requestBody:
+        required: true
+        description: Datos para poder registrar un usuario
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+      responses:
+        201:
+          description: Exito en el registro de un usuario
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Message201'
+        400:
+          description: Fracaso por datos incompletos o mal pasados
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error400'
+        500:
+          description: Fracaso por error fatal en el servidor
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Error500'
