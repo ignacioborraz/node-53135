@@ -40,3 +40,14 @@
 [33mERROR[39m: POST /api/auth/register 400 - 9:19:54 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
 [33mERROR[39m: POST /api/auth/register 400 - 9:20:26 PM - la contraseña debe ser alfanumerica con min/MAY
 [33mERROR[39m: POST /api/auth/register 400 - 9:20:43 PM - la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:47:25 PM - el email debe ser válido,la contraseña debe ser alfanumerica con min/MAY,"avatar" must be a valid uri
+[33mERROR[39m: POST /api/auth/register 400 - 9:48:52 PM - el email debe ser válido,la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:49:03 PM - la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:49:13 PM - la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:49:15 PM - la contraseña debe ser alfanumerica con min/MAY
+[33mERROR[39m: POST /api/auth/register 400 - 9:49:43 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 9:49:53 PM - el email debe ser válido
+[33mERROR[39m: POST /api/auth/register 400 - 9:51:54 PM - "avatar" must be a valid uri
+[33mERROR[39m: POST / 401 - 10:01:36 PM - Bad auth from poliecies!}
+[33mERROR[39m: GET /api/pets/:pid undefined - 10:12:24 PM - Cast to ObjectId failed for value ":pid" (type string) at path "_id" for model "pets"
+[33mERROR[39m: GET /api/pets/pid undefined - 10:13:32 PM - Cast to ObjectId failed for value "pid" (type string) at path "_id" for model "pets"
