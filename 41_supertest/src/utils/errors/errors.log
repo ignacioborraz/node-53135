@@ -57,3 +57,35 @@
 [33mERROR[39m: POST /signout 403 - 7:49:51 PM - Forbidden from poliecies!
 [33mERROR[39m: POST /signout 401 - 7:50:35 PM - Bad auth from poliecies!}
 [33mERROR[39m: POST /signout 401 - 7:51:32 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /api/auth/register 400 - 8:02:20 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:08:29 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:09:19 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:16:38 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:17:12 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:19:49 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/register 400 - 8:21:22 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/login 400 - 8:27:49 PM - Invalid credentials
+[33mERROR[39m: POST /api/auth/login 400 - 8:28:07 PM - Invalid credentials
+[33mERROR[39m: POST /signout 403 - 8:31:17 PM - Forbidden from poliecies!
+[33mERROR[39m: POST /signout 403 - 8:31:22 PM - Forbidden from poliecies!
+[33mERROR[39m: POST /api/auth/register 400 - 8:35:12 PM - Invalid credentials
+[33mERROR[39m: POST /signout 401 - 8:38:17 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /signout 401 - 8:38:52 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /signout 401 - 8:39:39 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /signout 401 - 8:40:24 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /signout 401 - 8:40:46 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 401 - 8:45:05 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 401 - 8:45:34 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:46:41 PM - Invalid credentials!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:47:18 PM - Invalid credentials!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:47:53 PM - Invalid credentials!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:48:22 PM - Invalid credentials!
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:49:18 PM - Invalid credentials!
+[33mERROR[39m: DELETE /api/auth/66a8275fc9ae6feff312ef83 undefined - 8:50:44 PM - error is not defined
+[33mERROR[39m: DELETE /66a8275fc9ae6feff312ef83 400 - 8:51:57 PM - Invalid credentials!
+[33mERROR[39m: POST /api/auth/login 400 - 8:53:16 PM - Invalid credentials
+[33mERROR[39m: POST /signout 401 - 8:53:16 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /api/auth/login 400 - 8:53:26 PM - Invalid credentials
+[33mERROR[39m: POST /signout 401 - 8:53:26 PM - Bad auth from poliecies!
+[33mERROR[39m: POST /api/auth/login 400 - 8:54:08 PM - Invalid credentials
+[33mERROR[39m: POST /signout 401 - 8:54:08 PM - Bad auth from poliecies!

@@ -6,7 +6,7 @@ import {
   login,
   verifyCode,
   signout,
-  //online
+  destroy,
 } from "../../controllers/auth.controller.js";
 
 import passportCallback from "../../middlewares/passportCb.mid.js";
@@ -24,8 +24,8 @@ class AuthRouter extends CustomRouter {
     );
     this.create("/login", ["PUBLIC"], passportCallback("login"), login);
     this.create("/verify", ["PUBLIC"], verifyCode);
-    this.create("/signout", ["USER","ADMIN"], signout);
-    //this.create("/online", ["USER"], online);
+    this.create("/signout", ["USER", "ADMIN"], signout);
+    this.destroy("/:id", ["PUBLIC"], destroy);
   }
 }
 

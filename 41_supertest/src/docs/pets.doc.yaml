@@ -1,0 +1,363 @@
+components:
+  schemas:
+    Pet:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Name of the pet
+        specie:
+          type: string
+          description: Specie of the pet
+        birthDate:
+          type: string
+          format: date
+          description: Birth date of the pet
+        adopted:
+          type: boolean
+          description: Is adopted?
+        owner:
+          type: string
+          description: Who adopted?
+        image:
+          type: string
+          description: Photo of the pet
+      example:
+        name: Lolo
+        specie: fish
+        birthDate: 2020-07-09
+        adopted: false
+        image: https://pecesdeacuario10.com/wp-content/uploads/pez-angel-2.jpg
+  responses:
+    Mes201:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 201
+        message: 'CREATED ID: 123456abc12345'
+    Res200one:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        response:
+          type: object
+      example:
+        statusCode: 200
+        response:
+          name: Lolo
+          specie: fish
+          birthDate: 2020-07-09
+          adopted: false
+          image: https://pecesdeacuario10.com/wp-content/uploads/pez-angel-2.jpg
+    Res200all:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        response:
+          type: array
+          items:
+            $ref: '#/components/schemas/Pet'
+      example:
+        statusCode: 200
+        response:
+          - name: Lolo
+            specie: fish
+            birthDate: 2020-07-09
+            adopted: false
+            image: https://pecesdeacuario10.com/wp-content/uploads/pez-angel-2.jpg
+          - name: Lolo
+            specie: fish
+            birthDate: 2020-07-09
+            adopted: false
+            image: https://pecesdeacuario10.com/wp-content/uploads/pez-angel-2.jpg
+          - name: Lolo
+            specie: fish
+            birthDate: 2020-07-09
+            adopted: false
+            image: https://pecesdeacuario10.com/wp-content/uploads/pez-angel-2.jpg
+    Err400:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 400
+        message: 'Invalid fields'
+    Err401:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 401
+        message: 'Bad auth from policies!'
+    Err403:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 403
+        message: 'Forbidden from policies!'
+    Err404:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 404
+        message: 'Not found docs'
+    Err500:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+          format: int32
+        message:
+          type: string
+      example:
+        statusCode: 500
+        message: 'CODER API ERROR'
+  securitySchemes:
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: token
+paths:
+  /pets:
+    post:
+      summary: Create a new pet
+      tags:
+        - Pet
+      security:
+        - cookieAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        '201':
+          description: Pet creation success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Mes201'
+        '400':
+          description: Invalid or incomplete data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err400'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err401'
+        '403':
+          description: Authorization failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err403'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err500'
+    get:
+      summary: Get all pets
+      tags:
+        - Pet
+      responses:
+        '200':
+          description: Pet get success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Res200all'
+        '400':
+          description: Invalid or incomplete data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err400'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err404'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err500'
+  /pets/{pid}:
+    get:
+      summary: Get a pet by ID
+      tags:
+        - Pet
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Unique identifier of the pet to retrieve
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Pet get success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Res200one'
+        '400':
+          description: Invalid or incomplete data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err400'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err404'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err500'
+    put:
+      summary: Update a pet by ID
+      tags:
+        - Pet
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Unique identifier of the pet to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Pet'
+      responses:
+        '200':
+          description: Successfully updated the pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Res200one'
+        '400':
+          description: Invalid or incomplete data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err400'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err401'
+        '403':
+          description: Authorization failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err403'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err404'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err500'
+    delete:
+      summary: Delete a pet by ID
+      tags:
+        - Pet
+      security:
+        - cookieAuth: []
+      parameters:
+        - name: pid
+          in: path
+          required: true
+          description: Unique identifier of the pet to delete
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successfully updated the pet
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Res200one'
+        '400':
+          description: Invalid or incomplete data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err400'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err401'
+        '403':
+          description: Authorization failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err403'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err404'
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/responses/Err500'

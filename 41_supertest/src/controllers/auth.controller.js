@@ -1,6 +1,6 @@
 //CONTROLADOR LLAMA A SERVICIO
 
-import { readByEmailService, updateService } from "../services/auth.service.js";
+import { readByEmailService, updateService, destroyService } from "../services/auth.service.js";
 
 const register = async (req, res, next) => {
   try {
@@ -39,4 +39,14 @@ const signout = async (req, res, next) => {
   }
 };
 
-export { register, login, verifyCode, signout };
+const destroy = async (req, res, next) => {
+  try {
+    await destroyService(req.params.id)
+    return res.message200("User deleted!");
+  } catch (error) {
+    console.log(error);
+    return res.error400("Invalid credentials!");
+  }
+};
+
+export { register, login, verifyCode, signout, destroy };
