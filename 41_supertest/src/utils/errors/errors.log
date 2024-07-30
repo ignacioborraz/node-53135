@@ -89,3 +89,7 @@
 [33mERROR[39m: POST /signout 401 - 8:53:26 PM - Bad auth from poliecies!
 [33mERROR[39m: POST /api/auth/login 400 - 8:54:08 PM - Invalid credentials
 [33mERROR[39m: POST /signout 401 - 8:54:08 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /666a384a3e5c8e385e8b90d8 401 - 9:55:03 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /666a384a3e5c8e385e8b90d8 401 - 9:55:28 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /666a384a3e5c8e385e8b90d8 401 - 9:58:24 PM - Bad auth from poliecies!
+[33mERROR[39m: DELETE /666a384a3e5c8e385e8b90d8 401 - 10:00:20 PM - Bad auth from poliecies!
