@@ -6,9 +6,10 @@ import { ConfigService } from '@nestjs/config';
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
-    app.setGlobalPrefix('api');
     app.use(morgan('dev'));
-    const port = new ConfigService().get('PORT');
+    app.setGlobalPrefix('api')
+    //const port = process.env.PORT || 8080;
+    const port = app.get(ConfigService).get("PORT") || 8080
     await app.listen(port);
     console.log('server ready on port ' + port);
   } catch (error) {

@@ -5,11 +5,10 @@ import * as morgan from 'morgan';
 async function bootstrap() {
   try {
     const app = await NestFactory.create(AppModule);
-    const port = 8080; //la clase que viene le metemos la vriable de entorno
-    app.use(morgan("dev"))
+    app.use(morgan('dev'));
+    const port = 8080;
     await app.listen(port);
-    console.log("server ready on port "+port);
-    
+    console.log('server ready on port ' + port);
   } catch (error) {
     console.log(error);
   }

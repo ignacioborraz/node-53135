@@ -1,11 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './entities/user.entity';
 
 @Injectable()
 export class UsersService {
+
   users: Array<User>;
+
   constructor() {
     this.users = [
       {
@@ -29,30 +30,41 @@ export class UsersService {
       },
     ];
   }
-  create(createUserDto: CreateUserDto) {
-    const data: CreateUserDto = {
-      _id: createUserDto._id || String(Math.floor(Math.random() * 1000000)),
-      email: createUserDto.email,
-      password: createUserDto.password,
-      role: createUserDto.role || 0,
-    };
-    this.users.push(data);
-    return data._id;
+
+  create(user: User) {
+    user = new CreateUserDto(user);
+    this.users.push(user);
+    return user._id;
   }
 
   findAll() {
     return this.users;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} user`;
+  findOne(id: string) {
+    return this.users.find((each) => each._id === id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+  findByEmail(email: string) {
+    return this.users.find((each) => each.email === email);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} user`;
+  update(id: string, data: User) {
+    const user = this.users.find((each) => each._id === id);
+    if (user) {
+      for (let prop in data) {
+        user[prop] = data[prop];
+      }
+    }
+    return user;
   }
+
+  remove(id: string) {
+    const user = this.users.find((each) => each._id === id);
+    if (user) {
+      this.users = this.users.filter((each) => each._id !== id);
+    }
+    return user;
+  }
+
 }
